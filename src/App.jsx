@@ -20,7 +20,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [showEnglish, setShowEnglish] = useState(true);
   const [showJapanese, setShowJapanese] = useState(true);
-  const [checkRandom, setCheckRandom] = useState(false);
+  const [englishCheckRandom, setEnglishCheckRandom] = useState(false);
+  const [japaneseCheckRandom, setJapaneseCheckRandom] = useState(false);
 
   const message = language(count, translations);
   const randomMessage = randomEnglish(translations);
@@ -35,6 +36,9 @@ function App() {
   }
 
   function previousNumber() {
+    setEnglishCheckRandom(false);
+    setJapaneseCheckRandom(false);
+
     if (count >= 1) {
       setCount((count) => count - 1);
     } else {
@@ -43,20 +47,33 @@ function App() {
   }
 
   function nextNumber() {
+    setEnglishCheckRandom(false);
+    setJapaneseCheckRandom(false);
+
     if (count !== 10) {
       setCount((count) => count + 1);
     }
   }
 
-  function randomCheck() {
-    setCheckRandom(!checkRandom);
+  function randomEnglishCheck() {
+    setEnglishCheckRandom(!englishCheckRandom);
+  }
+
+  function randomJapaneseCheck() {
+    setJapaneseCheckRandom(!japaneseCheckRandom);
   }
 
   function showEnglishOnScreen() {
+    setEnglishCheckRandom(false);
+    setJapaneseCheckRandom(false);
+
     setShowEnglish(!showEnglish);
   }
 
   function showJapaneseOnScreen() {
+    setEnglishCheckRandom(false);
+    setJapaneseCheckRandom(false);
+
     setShowJapanese(!showJapanese);
   }
 
@@ -76,13 +93,28 @@ function App() {
         buttonText={"Show/Hide Japanese"}
       />
 
-      <Button callbackFn={randomCheck} buttonText={"Random (English)"} />
-      <Button callbackFn={randomCheck} buttonText={"Random (Japanese)"} />
+      <Button callbackFn={randomEnglishCheck} buttonText={"Random (English)"} />
+      <Button
+        callbackFn={randomJapaneseCheck}
+        buttonText={"Random (Japanese)"}
+      />
 
       <body>
-        {checkRandom ? (
+        {randomEnglishCheck ? (
           <div style={{ border: "solid black 2px", padding: 10 }}>
             <p>Random English: {randomMessage.english}</p>
+            <p>Random Japanese: ❓</p>
+          </div>
+        ) : (
+          <div style={{ border: "solid black 2px", padding: 10 }}>
+            {showEnglish ? <p>English: {message.english}</p> : "❓"}
+            {showJapanese ? <p>Japanese: {message.japanese}</p> : "❓"}
+          </div>
+        )}
+
+        {randomJapaneseCheck ? (
+          <div style={{ border: "solid black 2px", padding: 10 }}>
+            <p>Random English: ❓</p>
             <p>Random Japanese: {randomMessage.japanese}</p>
           </div>
         ) : (
