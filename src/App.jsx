@@ -34,10 +34,6 @@ function App() {
     return objects[randomNumber];
   }
 
-  function randomEnglishClicked() {
-    return true;
-  }
-
   function previousNumber() {
     if (count >= 1) {
       setCount((count) => count - 1);
@@ -81,7 +77,7 @@ function App() {
       />
 
       <Button callbackFn={randomCheck} buttonText={"Random (English)"} />
-      <Button callbackFn="" buttonText={"Random (Japanese)"} />
+      <Button callbackFn={randomCheck} buttonText={"Random (Japanese)"} />
 
       <body>
         {checkRandom ? (
