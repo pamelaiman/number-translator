@@ -1,7 +1,3 @@
-
-
 export default function Button(props) {
-    return(
-        <button>{props.buttonText}</button>
-    )
+  return <button onClick={props.callbackFn}>{props.buttonText}</button>;
 }
