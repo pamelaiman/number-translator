@@ -20,7 +20,12 @@ function App() {
   const [count, setCount] = useState(0);
 
   function previousNumber() {
-    setCount((count) => count - 1);
+    if (count >= 1) {
+      setCount((count) => count - 1)
+    } else {
+      setCount(0)
+
+    }
   }
 
   function nextNumber() {
