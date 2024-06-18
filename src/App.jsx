@@ -64,15 +64,6 @@ function App() {
         {showEnglish ? <p>English: {message.english}</p> : "❓"}
         {showJapanese ? <p>Japanese: {message.japanese}</p> : "❓"}
       </div>
-
-      {/* {checkRandom ? (
-        <div style={{ border: "solid black 2px", padding: 10 }}>
-          <p>Random English: {randomMessage.english}</p>
-          <p>Random Japanese: {randomMessage.japanese}</p>
-        </div>
-      ) : (
-        
-      )} */}
     </div>
   );
 }
