@@ -24,7 +24,9 @@ function App() {
   }
 
   function nextNumber() {
-    setCount((count) => count + 1);
+    if (count !== 10) {
+      setCount((count) => count + 1);
+    }
   }
 
   return (
